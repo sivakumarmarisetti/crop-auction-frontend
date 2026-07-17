@@ -1,0 +1,37 @@
+.stats-grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
+
+    gap: 24px;
+
+    margin-bottom: 32px;
+
+}
+
+table {
+
+    width: 100%;
+
+}
+
+.mat-mdc-header-row {
+
+    background: var(--surface-hover);
+
+}
+
+.mat-mdc-header-cell {
+
+    font-weight: 600;
+
+    color: var(--text-primary);
+
+}
+
+.mat-mdc-row:hover {
+
+    background: var(--surface-hover);
+
+}

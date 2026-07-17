@@ -1,0 +1,59 @@
+.container {
+
+    max-width: 900px;
+
+    margin: 30px auto;
+
+}
+
+mat-card {
+
+    padding: 20px;
+
+}
+
+.grid {
+
+    display: grid;
+
+    grid-template-columns: repeat(2,1fr);
+
+    gap: 20px;
+
+}
+
+.full-width {
+
+    width: 100%;
+
+    margin-top: 20px;
+
+}
+
+.buttons {
+
+    display: flex;
+
+    justify-content: end;
+
+    gap: 15px;
+
+    margin-top: 20px;
+
+}
+
+mat-form-field {
+
+    width: 100%;
+
+}
+
+@media(max-width:768px){
+
+    .grid{
+
+        grid-template-columns:1fr;
+
+    }
+
+}

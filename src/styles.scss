@@ -1,1 +1,99 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+
+/* =====================================================
+   Theme
+===================================================== */
+
+@import 'theme/colors';
+@import 'theme/typography';
+@import 'theme/spacing';
+@import 'theme/shadows';
+@import 'theme/animations';
+@import 'theme/components';
+@import 'theme/auth';
+
+html {
+
+  height: 100%;
+
+  @include mat.theme(
+    (
+      color: (
+        primary: mat.$azure-palette,
+        tertiary: mat.$blue-palette
+      ),
+      typography: Inter,
+      density: 0
+    )
+  );
+
+}
+
+body {
+
+  margin: 0;
+
+  height: 100%;
+
+  background: var(--background);
+
+  color: var(--text-primary);
+
+  font-family: "Inter", sans-serif;
+
+  transition: background .25s ease,
+              color .25s ease;
+
+}
+
+/* ==========================================
+   Scrollbar
+========================================== */
+
+::-webkit-scrollbar {
+
+  width: 8px;
+
+}
+
+::-webkit-scrollbar-thumb {
+
+  background: #cbd5e1;
+
+  border-radius: 999px;
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+
+  background: #94a3b8;
+
+}
+
+/* ==========================================
+   Snackbar
+========================================== */
+
+.success-snackbar {
+
+  --mdc-snackbar-container-color: #22c55e;
+
+}
+
+.error-snackbar {
+
+  --mdc-snackbar-container-color: #ef4444;
+
+}
+
+.warning-snackbar {
+
+  --mdc-snackbar-container-color: #f59e0b;
+
+}
+
+.info-snackbar {
+
+  --mdc-snackbar-container-color: #2563eb;
+
+}

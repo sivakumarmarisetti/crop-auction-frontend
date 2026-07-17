@@ -1,0 +1,113 @@
+.stat-card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    padding: 24px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+
+    transition: .25s;
+
+    cursor: default;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 18px 40px rgba(15,23,42,.08);
+
+}
+
+.top {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+.icon-wrapper {
+
+    width: 58px;
+
+    height: 58px;
+
+    border-radius: 16px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+}
+
+.icon-wrapper mat-icon {
+
+    font-size: 28px;
+
+    width: 28px;
+
+    height: 28px;
+
+}
+
+.title {
+
+    font-size: 15px;
+
+    font-weight: 500;
+
+    color: var(--text-secondary);
+
+}
+
+.value {
+
+    font-size: 34px;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+    line-height: 1;
+
+}
+
+.subtitle {
+
+    color: var(--success);
+
+    font-size: 14px;
+
+    font-weight: 500;
+
+}
+
+.stat-card {
+
+    cursor: pointer;
+
+    transition: all .25s ease;
+
+}
+
+.stat-card:hover {
+
+    transform: translateY(-4px);
+
+    box-shadow: 0 10px 30px rgba(0,0,0,.12);
+
+}

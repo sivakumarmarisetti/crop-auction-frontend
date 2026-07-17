@@ -1,0 +1,107 @@
+:host {
+
+    display: block;
+
+}
+
+h2 {
+
+    margin: 0;
+
+    font-size: 24px;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+mat-dialog-content {
+
+    min-width: 380px;
+
+    margin-top: 8px;
+
+    padding-top: 8px;
+
+}
+
+mat-dialog-content p {
+
+    margin: 0;
+
+    font-size: 15px;
+
+    line-height: 1.6;
+
+    color: var(--text-secondary);
+
+}
+
+mat-dialog-actions {
+
+    padding: 24px 0 0;
+
+    display: flex;
+
+    justify-content: flex-end;
+
+    gap: 12px;
+
+}
+
+button {
+
+    min-width: 110px;
+
+    height: 42px;
+
+    border-radius: 10px;
+
+    font-weight: 600;
+
+}
+
+.dialog-header {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 16px;
+
+    margin-bottom: 12px;
+
+}
+
+.dialog-icon {
+
+    width: 52px;
+
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #FFF7ED;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    font-size: 24px;
+
+}
+
+mat-dialog-actions {
+
+    gap: 12px;
+
+}
+
+button {
+
+    min-width: 110px;
+
+}

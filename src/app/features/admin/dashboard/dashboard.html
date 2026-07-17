@@ -1,0 +1,45 @@
+<app-page-container>
+
+    <app-page-header
+        title="Admin Dashboard"
+        subtitle="Manage users, auctions and monitor the platform.">
+    </app-page-header>
+
+    <div class="dashboard-grid">
+
+        <app-stat-card
+            title="Pending Users"
+            [value]="dashboard?.pendingUsers ?? 0"
+            icon="person_add"
+            (click)="goToPendingUsers()">
+        </app-stat-card>
+
+        <app-stat-card
+            title="Pending Auction Requests"
+            [value]="dashboard?.pendingAuctionRequests ?? 0"
+            icon="gavel"
+            (click)="goToPendingAuctionRequests()">
+        </app-stat-card>
+
+        <app-stat-card
+            title="Registered Farmers"
+            [value]="dashboard?.totalFarmers ?? 0"
+            icon="agriculture">
+        </app-stat-card>
+
+        <app-stat-card
+            title="Registered Buyers"
+            [value]="dashboard?.totalBuyers ?? 0"
+            icon="shopping_cart">
+        </app-stat-card>
+
+        <app-stat-card
+            title="Auctions"
+            [value]="dashboard?.totalAuctions ?? 0"
+            icon="store"
+            (click)="goToAuctions()">
+        </app-stat-card>
+
+    </div>
+
+</app-page-container>

@@ -1,0 +1,141 @@
+:host{
+
+    display:block;
+
+}
+
+.navbar{
+
+    height:72px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    background:white;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.left-section{
+
+    display:flex;
+
+    align-items:center;
+
+}
+
+.search-box{
+
+    width:360px;
+
+    height:46px;
+
+    background:#f8fafc;
+
+    border:1px solid var(--border);
+
+    border-radius:14px;
+
+    display:flex;
+
+    align-items:center;
+
+    padding:0 18px;
+
+    gap:12px;
+
+}
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    outline:none;
+
+    background:transparent;
+
+    font-size:15px;
+
+}
+
+.search-box mat-icon{
+
+    color:var(--text-light);
+
+}
+
+.right-section{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.user-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+}
+
+.avatar{
+
+    width:44px;
+
+    height:44px;
+
+    border-radius:50%;
+
+    background:var(--primary);
+
+    color:white;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    font-size:18px;
+
+    font-weight:700;
+
+}
+
+.user-name{
+
+    font-size:15px;
+
+    font-weight:600;
+
+    color:var(--text-primary);
+
+}
+
+.user-role{
+
+    font-size:13px;
+
+    color:var(--text-secondary);
+
+}
+
+button{
+
+    color:var(--text-secondary);
+
+}

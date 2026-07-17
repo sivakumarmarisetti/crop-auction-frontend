@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>
+
+    Reject User
+
+</h2>
+
+<mat-dialog-content>
+
+    Are you sure you want to reject this user?
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-stroked-button
+        (click)="cancel()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-stroked-button
+        color="primary"
+        (click)="reject()">
+
+        Reject
+
+    </button>
+
+</mat-dialog-actions>

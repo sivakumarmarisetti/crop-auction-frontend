@@ -1,0 +1,254 @@
+<app-page-container>
+
+    <app-page-header
+        title="My Crops"
+        subtitle="Manage your registered crops and request auctions.">
+    </app-page-header>
+
+    <div class="toolbar">
+
+        <app-search-bar
+            placeholder="Search crops..."
+            (search)="applyFilter($event)">
+        </app-search-bar>
+
+        <app-action-button
+            label="Add Crop"
+            icon="add"
+            (click)="goToAddCrop()">
+        </app-action-button>
+
+    </div>
+
+    <app-table-card
+        title="Registered Crops"
+        subtitle="All crops added by you">
+
+        @if (dataSource.data.length > 0) {
+
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort>
+
+                <!-- Crop -->
+
+                <ng-container matColumnDef="cropName">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Crop
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        {{ crop.cropName }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Category -->
+
+                <ng-container matColumnDef="category">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Category
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        {{ crop.category }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Quantity -->
+
+                <ng-container matColumnDef="quantity">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Quantity
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        {{ crop.quantity }} Kg
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Expected Price -->
+
+                <ng-container matColumnDef="expectedPrice">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Expected Price
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        ₹ {{ crop.expectedPrice }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Status -->
+
+                <ng-container matColumnDef="status">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Status
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        <app-status-chip
+                            [text]="crop.status | cropStatus"
+                            [color]="
+                                crop.status === CropStatus.AVAILABLE
+                                    ? 'green'
+                                    : crop.status === CropStatus.AUCTION_REQUESTED
+                                        ? 'orange'
+                                        : crop.status === CropStatus.SOLD
+                                            ? 'red'
+                                            : 'blue'
+                            ">
+                        </app-status-chip>
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Actions -->
+
+                <ng-container matColumnDef="actions">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef>
+
+                        Actions
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let crop">
+
+                        <button
+                            mat-icon-button
+                            color="primary"
+                            matTooltip="Edit Crop"
+                            (click)="editCrop(crop.id)">
+
+                            <mat-icon>
+
+                                edit
+
+                            </mat-icon>
+
+                        </button>
+
+                        <button
+                            mat-icon-button
+                            color="warn"
+                            matTooltip="Delete Crop"
+                            (click)="deleteCrop(crop.id)">
+
+                            <mat-icon>
+
+                                delete
+
+                            </mat-icon>
+
+                        </button>
+
+                        @if (crop.status === CropStatus.AVAILABLE) {
+
+                            <button
+                                mat-icon-button
+                                color="accent"
+                                matTooltip="Request Auction"
+                                (click)="requestAuction(crop)">
+
+                                <mat-icon>
+
+                                    gavel
+
+                                </mat-icon>
+
+                            </button>
+
+                        }
+
+                    </td>
+
+                </ng-container>
+
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns">
+                </tr>
+
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns">
+                </tr>
+
+            </table>
+
+            <mat-paginator
+                [pageSize]="10">
+            </mat-paginator>
+
+        } @else {
+
+            <app-empty-state
+                icon="🌾"
+                title="No Crops Added"
+                subtitle="Add your first crop to start participating in auctions.">
+            </app-empty-state>
+
+        }
+
+    </app-table-card>
+
+</app-page-container>

@@ -1,0 +1,149 @@
+<div class="container">
+
+    <mat-card>
+
+        <mat-card-header>
+
+            <mat-card-title>
+
+                {{ isEditMode ? 'Edit Crop' : 'Add Crop' }}
+
+            </mat-card-title>
+
+        </mat-card-header>
+
+        <mat-card-content>
+
+            <form
+                [formGroup]="cropForm"
+                (ngSubmit)="save()">
+
+                <div class="grid">
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label>Crop Name</mat-label>
+
+                        <input
+                            matInput
+                            formControlName="cropName">
+
+                        @if(cropForm.controls.cropName.hasError('required')
+                        && cropForm.controls.cropName.touched){
+
+                        <mat-error>
+
+                            Crop Name is required
+
+                        </mat-error>
+
+                        }
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label>Category</mat-label>
+
+                        <input
+                            matInput
+                            formControlName="category">
+
+                        @if(cropForm.controls.category.hasError('required')
+                        && cropForm.controls.category.touched){
+
+                        <mat-error>
+
+                            Category is required
+
+                        </mat-error>
+
+                        }
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label>Quantity (Kg)</mat-label>
+
+                        <input
+                            matInput
+                            type="number"
+                            formControlName="quantity">
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label>Expected Price</mat-label>
+
+                        <input
+                            matInput
+                            type="number"
+                            formControlName="expectedPrice">
+
+                    </mat-form-field>
+
+                    <mat-form-field appearance="outline">
+
+                        <mat-label>Harvest Date</mat-label>
+
+                        <input
+                            matInput
+                            [matDatepicker]="picker"
+                            formControlName="harvestDate">
+
+                        <mat-datepicker-toggle
+                            matSuffix
+                            [for]="picker">
+                        </mat-datepicker-toggle>
+
+                        <mat-datepicker #picker></mat-datepicker>
+
+                    </mat-form-field>
+
+                </div>
+
+                <mat-form-field
+                    appearance="outline"
+                    class="full-width">
+
+                    <mat-label>Description</mat-label>
+
+                    <textarea
+                        rows="4"
+                        matInput
+                        formControlName="description">
+                    </textarea>
+
+                </mat-form-field>
+
+                <div class="buttons">
+
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        type="submit">
+
+                        {{ isEditMode ? 'Update Crop' : 'Save Crop' }}
+
+                    </button>
+
+                    <button
+                        mat-raised-button
+                        type="button"
+                        (click)="reset()">
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </mat-card-content>
+
+    </mat-card>
+
+</div>

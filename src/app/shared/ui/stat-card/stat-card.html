@@ -1,0 +1,44 @@
+<div
+    class="stat-card"
+    (click)="onClick()">
+
+    <div class="top">
+
+        <div
+            class="icon-wrapper"
+            [style.background]="iconBackground">
+
+            <mat-icon
+                [style.color]="iconColor">
+
+                {{icon}}
+
+            </mat-icon>
+
+        </div>
+
+    </div>
+
+    <div class="title">
+
+        {{title}}
+
+    </div>
+
+    <div class="value">
+
+        {{value}}
+
+    </div>
+
+    @if(subtitle){
+
+    <div class="subtitle">
+
+        {{subtitle}}
+
+    </div>
+
+    }
+
+</div>

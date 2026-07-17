@@ -1,0 +1,13 @@
+export enum AuctionRequestStatus {
+
+  REQUESTED = 'REQUESTED',
+
+  APPROVED = 'APPROVED',
+
+  REJECTED = 'REJECTED',
+
+  SCHEDULED = 'SCHEDULED',
+
+  COMPLETED = 'COMPLETED'
+
+}

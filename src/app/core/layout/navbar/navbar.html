@@ -1,0 +1,99 @@
+<div class="navbar">
+
+    <div class="left-section">
+
+        <div class="search-box">
+
+            <mat-icon>
+
+                search
+
+            </mat-icon>
+
+            <input
+                type="text"
+                placeholder="Search..." />
+
+        </div>
+
+    </div>
+
+    <div class="right-section">
+
+        <button
+            mat-icon-button
+            matTooltip="Notifications">
+
+            <mat-icon>
+
+                notifications_none
+
+            </mat-icon>
+
+        </button>
+
+        @if(currentUser()){
+
+        <div class="user-card">
+
+            <div class="avatar">
+
+                {{ currentUser()?.name?.charAt(0) }}
+
+            </div>
+
+            <div>
+
+                <div class="user-name">
+
+                    {{ currentUser()?.name }}
+
+                </div>
+
+                <div class="user-role">
+
+                    {{ currentUser()?.role }}
+
+                </div>
+
+            </div>
+
+        </div>
+
+        }
+
+        <button
+
+            mat-icon-button
+
+            [matMenuTriggerFor]="menu">
+
+            <mat-icon>
+
+                expand_more
+
+            </mat-icon>
+
+        </button>
+
+        <mat-menu #menu="matMenu">
+
+            <button
+                mat-menu-item
+                (click)="logout()">
+
+                <mat-icon>
+
+                    logout
+
+                </mat-icon>
+
+                Logout
+
+            </button>
+
+        </mat-menu>
+
+    </div>
+
+</div>

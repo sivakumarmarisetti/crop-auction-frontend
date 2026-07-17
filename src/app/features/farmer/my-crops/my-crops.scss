@@ -1,0 +1,43 @@
+.toolbar {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 24px;
+
+}
+
+table {
+
+    width: 100%;
+
+}
+
+.mat-mdc-header-row {
+
+    background: var(--surface-hover);
+
+}
+
+.mat-mdc-header-cell {
+
+    font-weight: 600;
+
+}
+
+.mat-mdc-row:hover {
+
+    background: var(--surface-hover);
+
+    transition: .2s;
+
+}
+
+button[mat-icon-button] {
+
+    margin-right: 4px;
+
+}

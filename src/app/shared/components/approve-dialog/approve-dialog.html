@@ -1,0 +1,32 @@
+<h2 mat-dialog-title>
+
+    Approve User
+
+</h2>
+
+<mat-dialog-content>
+
+    Are you sure you want to approve this user?
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-stroked-button
+        (click)="cancel()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-stroked-button
+        color="primary"
+        (click)="approve()">
+
+        Approve
+
+    </button>
+
+</mat-dialog-actions>

@@ -1,0 +1,202 @@
+<app-page-container>
+
+    <app-page-header
+        title="Pending Auction Requests"
+        subtitle="Review and approve auction requests submitted by farmers.">
+    </app-page-header>
+
+    <app-page-toolbar>
+
+        <app-search-bar
+            placeholder="Search auction requests..."
+            (search)="applyFilter($event)">
+        </app-search-bar>
+
+    </app-page-toolbar>
+
+    <app-table-card
+        title="Pending Auction Requests"
+        subtitle="Auction requests waiting for administrator approval">
+
+        @if (dataSource.data.length > 0) {
+
+            <table
+                mat-table
+                [dataSource]="dataSource"
+                matSort>
+
+                <!-- Crop -->
+
+                <ng-container matColumnDef="cropName">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Crop
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let request">
+
+                        {{ request.cropName }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Status -->
+
+                <ng-container matColumnDef="status">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Status
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let request">
+
+                        <app-status-chip
+                            [text]="request.status"
+                            [color]="
+                                request.status === 'REQUESTED'
+                                    ? 'orange'
+                                    : request.status === 'APPROVED'
+                                        ? 'green'
+                                        : request.status === 'REJECTED'
+                                            ? 'red'
+                                            : request.status === 'SCHEDULED'
+                                                ? 'blue'
+                                                : 'gray'
+                            ">
+                        </app-status-chip>
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Requested At -->
+
+                <ng-container matColumnDef="requestedAt">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef
+                        mat-sort-header>
+
+                        Requested On
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let request">
+
+                        {{ request.requestedAt | date:'medium' }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Farmer Remarks -->
+
+                <ng-container matColumnDef="farmerRemarks">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef>
+
+                        Farmer Remarks
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let request">
+
+                        {{ request.farmerRemarks || '-' }}
+
+                    </td>
+
+                </ng-container>
+
+                <!-- Actions -->
+
+                <ng-container matColumnDef="actions">
+
+                    <th
+                        mat-header-cell
+                        *matHeaderCellDef>
+
+                        Actions
+
+                    </th>
+
+                    <td
+                        mat-cell
+                        *matCellDef="let request">
+
+                        <div class="action-buttons">
+
+                            <button
+                                mat-stroked-button
+                                color="primary"
+                                (click)="approve(request.id)">
+
+                                ✓ Approve
+
+                            </button>
+
+                            <button
+                                mat-stroked-button
+                                color="warn"
+                                (click)="reject(request.id)">
+
+                                ✕ Reject
+
+                            </button>
+
+                        </div>
+
+                    </td>
+
+                </ng-container>
+
+                <tr
+                    mat-header-row
+                    *matHeaderRowDef="displayedColumns">
+                </tr>
+
+                <tr
+                    mat-row
+                    *matRowDef="let row; columns: displayedColumns">
+                </tr>
+
+            </table>
+
+            <mat-paginator
+                [pageSize]="10">
+            </mat-paginator>
+
+        } @else {
+
+            <app-empty-state
+                icon="📋"
+                title="No Pending Auction Requests"
+                subtitle="All auction requests have been processed.">
+            </app-empty-state>
+
+        }
+
+    </app-table-card>
+
+</app-page-container>

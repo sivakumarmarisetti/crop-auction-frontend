@@ -1,0 +1,73 @@
+<div class="sidebar">
+
+    <div class="logo">
+
+        <div class="logo-icon">
+
+            C
+
+        </div>
+
+        <div>
+
+            <div class="logo-title">
+
+                CAMS
+
+            </div>
+
+            <div class="logo-subtitle">
+
+                Crop Auction Platform
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="menu">
+
+        <div class="menu-title">
+
+            Navigation
+
+        </div>
+
+        @for(menu of menuItems(); track menu.route){
+
+        <a
+
+            [routerLink]="menu.route"
+
+            routerLinkActive="active-link">
+
+            <mat-icon>
+
+                {{menu.icon}}
+
+            </mat-icon>
+
+            <span>
+
+                {{menu.label}}
+
+            </span>
+
+        </a>
+
+        }
+
+    </div>
+
+    <div class="sidebar-footer">
+
+        <div class="version">
+
+            CAMS Enterprise v1.0
+
+        </div>
+
+    </div>
+
+</div>

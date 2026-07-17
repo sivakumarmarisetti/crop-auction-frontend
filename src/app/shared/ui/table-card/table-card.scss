@@ -1,0 +1,63 @@
+.table-card {
+
+    background: white;
+
+    border-radius: 20px;
+
+    border: 1px solid var(--border);
+
+    overflow: hidden;
+
+    box-shadow: 0 8px 24px rgba(15,23,42,.05);
+
+}
+
+.table-header {
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 24px 30px;
+
+    border-bottom: 1px solid var(--border);
+
+}
+
+.table-content {
+
+    padding: 24px;
+
+}
+
+.header-actions {
+
+    display: flex;
+
+    gap: 12px;
+
+    align-items: center;
+
+}
+
+h2 {
+
+    margin: 0;
+
+    font-size: 22px;
+
+    font-weight: 700;
+
+    color: var(--text-primary);
+
+}
+
+p {
+
+    margin-top: 6px;
+
+    color: var(--text-secondary);
+
+}

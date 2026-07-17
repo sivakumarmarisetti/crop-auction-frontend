@@ -1,0 +1,65 @@
+:host {
+
+    display: block;
+
+}
+
+table {
+
+    width: 100%;
+
+}
+
+.mat-mdc-header-row {
+
+    background: #F9FAFB;
+
+}
+
+.mat-mdc-header-cell {
+
+    font-weight: 600;
+
+    color: #374151;
+
+    font-size: 14px;
+
+}
+
+.mat-mdc-cell {
+
+    padding-top: 16px;
+
+    padding-bottom: 16px;
+
+}
+
+.mat-mdc-row:hover {
+
+    background: #F9FAFB;
+
+}
+
+.action-buttons {
+
+    display: flex;
+
+    gap: 10px;
+
+}
+
+.action-buttons button {
+
+    min-width: 110px;
+
+    border-radius: 8px;
+
+}
+
+mat-paginator {
+
+    margin-top: 16px;
+
+    border-top: 1px solid #E5E7EB;
+
+}

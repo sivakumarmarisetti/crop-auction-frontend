@@ -1,0 +1,50 @@
+<div class="dialog-header">
+
+    <div class="dialog-icon">
+
+        ⚠️
+
+    </div>
+
+    <div>
+
+        <h2 mat-dialog-title>
+
+            {{ data.title }}
+
+        </h2>
+
+    </div>
+
+</div>
+
+<mat-dialog-content>
+
+    <p>
+
+        {{ data.message }}
+
+    </p>
+
+</mat-dialog-content>
+
+<mat-dialog-actions>
+
+    <button
+        mat-stroked-button
+        (click)="cancel()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-flat-button
+        [color]="data.confirmColor ?? 'primary'"
+        (click)="confirm()">
+
+        {{ data.confirmText }}
+
+    </button>
+
+</mat-dialog-actions>

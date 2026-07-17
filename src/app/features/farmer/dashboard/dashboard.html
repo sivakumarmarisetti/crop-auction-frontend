@@ -1,0 +1,164 @@
+<app-page-header
+    title="Farmer Dashboard"
+    subtitle="Welcome back! Here's an overview of your farming activities.">
+</app-page-header>
+
+@if(dashboard){
+
+<div class="stats-grid">
+
+    <app-stat-card
+        title="Total Crops"
+        [value]="dashboard.totalCrops"
+        icon="grass"
+        iconBackground="#DCFCE7"
+        iconColor="#16A34A">
+    </app-stat-card>
+
+    <app-stat-card
+        title="Available"
+        [value]="dashboard.availableCrops"
+        icon="inventory_2"
+        iconBackground="#DBEAFE"
+        iconColor="#2563EB">
+    </app-stat-card>
+
+    <app-stat-card
+        title="Requested"
+        [value]="dashboard.requestedCrops"
+        icon="pending_actions"
+        iconBackground="#FEF3C7"
+        iconColor="#D97706">
+    </app-stat-card>
+
+    <app-stat-card
+        title="Sold"
+        [value]="dashboard.soldCrops"
+        icon="payments"
+        iconBackground="#FEE2E2"
+        iconColor="#DC2626">
+    </app-stat-card>
+
+    <app-stat-card
+        title="Pending Requests"
+        [value]="dashboard.pendingAuctionRequests"
+        icon="hourglass_top"
+        iconBackground="#FEF3C7"
+        iconColor="#D97706">
+    </app-stat-card>
+
+    <app-stat-card
+        title="Approved Requests"
+        [value]="dashboard.approvedAuctionRequests"
+        icon="verified"
+        iconBackground="#DCFCE7"
+        iconColor="#16A34A">
+    </app-stat-card>
+
+    
+
+</div>
+
+<app-table-card
+    title="Recent Crops"
+    subtitle="Your latest registered crops">
+
+    <table
+        mat-table
+        [dataSource]="dashboard.recentCrops">
+
+        <ng-container matColumnDef="cropName">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Crop
+
+            </th>
+
+            <td mat-cell *matCellDef="let crop">
+
+                {{crop.cropName}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="category">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Category
+
+            </th>
+
+            <td mat-cell *matCellDef="let crop">
+
+                {{crop.category}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="quantity">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Quantity
+
+            </th>
+
+            <td mat-cell *matCellDef="let crop">
+
+                {{crop.quantity}} Kg
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="expectedPrice">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Price
+
+            </th>
+
+            <td mat-cell *matCellDef="let crop">
+
+                ₹ {{crop.expectedPrice}}
+
+            </td>
+
+        </ng-container>
+
+        <ng-container matColumnDef="status">
+
+            <th mat-header-cell *matHeaderCellDef>
+
+                Status
+
+            </th>
+
+            <td mat-cell *matCellDef="let crop">
+
+                {{crop.status}}
+
+            </td>
+
+        </ng-container>
+
+        <tr
+            mat-header-row
+            *matHeaderRowDef="displayedColumns">
+        </tr>
+
+        <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns">
+        </tr>
+
+    </table>
+
+</app-table-card>
+
+}

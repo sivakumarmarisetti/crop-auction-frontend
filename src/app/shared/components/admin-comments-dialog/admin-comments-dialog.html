@@ -1,0 +1,70 @@
+<h2 mat-dialog-title>
+
+    {{ data?.action }} Auction Request
+
+</h2>
+
+<mat-dialog-content>
+
+    <form
+        [formGroup]="form">
+
+        <mat-form-field
+            appearance="outline"
+            class="full-width">
+
+            <mat-label>
+
+                Admin Comments
+
+            </mat-label>
+
+            <textarea
+                matInput
+                rows="5"
+                formControlName="adminComments"
+                placeholder="Enter your comments...">
+            </textarea>
+
+            @if (
+                form.controls.adminComments.hasError('required')
+                &&
+                form.controls.adminComments.touched
+            ) {
+
+                <mat-error>
+
+                    Comments are required.
+
+                </mat-error>
+
+            }
+
+        </mat-form-field>
+
+    </form>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+
+    <button
+        mat-button
+        type="button"
+        (click)="cancel()">
+
+        Cancel
+
+    </button>
+
+    <button
+        mat-flat-button
+        color="primary"
+        type="button"
+        (click)="submit()">
+
+        {{ data?.action }}
+
+    </button>
+
+</mat-dialog-actions>
