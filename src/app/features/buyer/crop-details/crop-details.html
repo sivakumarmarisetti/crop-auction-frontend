@@ -1,1 +1,25 @@
-<p>crop-details works!</p>
+<mat-card *ngIf="auction">
+<mat-card-title>Auction Details</mat-card-title>
+<p><strong>Auction Code:</strong> {{auction.auctionCode}}</p>
+<p><strong>Crop:</strong> {{auction.cropName}}</p>
+<p><strong>Category:</strong> {{auction.category}}</p>
+<p><strong>Farmer:</strong> {{auction.farmerName}}</p>
+<p><strong>Quantity:</strong> {{auction.quantity}}</p>
+<p><strong>Starting Price:</strong> ₹{{auction.startingPrice}}</p>
+<p><strong>Current Highest Bid:</strong> ₹{{auction.currentHighestBid}}</p>
+</mat-card>
+<mat-card><mat-card-title>Place Bid</mat-card-title>
+<form [formGroup]="form" (ngSubmit)="placeBid()">
+<mat-form-field><mat-label>Bid Amount</mat-label><input matInput type="number" formControlName="amount"></mat-form-field>
+<button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Place Bid</button>
+</form></mat-card>
+<mat-card><mat-card-title>Bid History</mat-card-title>
+<mat-list><mat-list-item *ngFor="let bid of bids">{{bid.buyerName}} — ₹{{bid.bidAmount}} — {{bid.bidTime|date:'medium'}}</mat-list-item></mat-list>
+</mat-card>
+<mat-card *ngIf="winner">
+<mat-card-title>Winner</mat-card-title>
+<p><strong>Buyer:</strong> {{winner.winnerName}}</p>
+<p><strong>Farmer:</strong> {{winner.farmerName}}</p>
+<p><strong>Crop:</strong> {{winner.cropName}}</p>
+<p><strong>Winning Bid:</strong> ₹{{winner.winningBid}}</p>
+</mat-card>

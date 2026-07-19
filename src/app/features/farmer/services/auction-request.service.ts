@@ -18,7 +18,37 @@ export class AuctionRequestService {
   private http = inject(HttpClient);
 
   private readonly apiUrl =
-    `${environment.apiUrl}/api/auction-requests`;
+    `${environment.apiUrl}/auction-requests`;
+  
+    approveRequest(
+  requestId: number,
+  request: AuctionRequestRequestModel
+): Observable<ApiResponseModel<void>> {
+
+  return this.http.put<ApiResponseModel<void>>(
+    `${this.apiUrl}/auction-requests/${requestId}/approve`,
+    request
+  );
+}
+
+rejectRequest(
+  requestId: number,
+  request: AuctionRequestRequestModel
+): Observable<ApiResponseModel<void>> {
+
+  return this.http.put<ApiResponseModel<void>>(
+    `${this.apiUrl}/auction-requests/${requestId}/reject`,
+    request
+  );
+}
+
+getPendingAuctionRequests():
+Observable<ApiResponseModel<AuctionRequestResponseModel[]>> {
+
+  return this.http.get<ApiResponseModel<AuctionRequestResponseModel[]>>(
+    `${this.apiUrl}/auction-requests/pending`
+  );
+}
 
   requestAuction(
     request: AuctionRequestRequestModel
@@ -39,5 +69,5 @@ export class AuctionRequestService {
     );
 
   }
-
 }
+

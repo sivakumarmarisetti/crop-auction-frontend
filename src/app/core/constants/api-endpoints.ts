@@ -8,6 +8,8 @@ export const API_ENDPOINTS = {
 
     AUCTIONS: '/auctions',
 
-    AUCTION_REQUESTS: '/auction-requests'
+    AUCTION_REQUESTS: '/auction-requests',
+
+    BIDS: '/bids'
 
 };

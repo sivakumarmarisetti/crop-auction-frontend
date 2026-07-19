@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ViewChild,
-  inject
+  inject,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -106,6 +107,9 @@ export class MyCrops implements OnInit {
   private router =
     inject(Router);
 
+    private cdr =
+  inject(ChangeDetectorRef);
+
   readonly CropStatus = CropStatus;
 
   displayedColumns = [
@@ -142,6 +146,7 @@ export class MyCrops implements OnInit {
 
           this.dataSource.data =
             response.data;
+            this.cdr.detectChanges();
 
           this.dataSource.paginator =
             this.paginator;

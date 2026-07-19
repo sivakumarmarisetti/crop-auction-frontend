@@ -94,7 +94,20 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/admin/auctions/auctions')
             .then(m => m.Auctions)
-      }
+      },
+      {
+  path: 'create-auction',
+  loadComponent: () =>
+    import('./features/auction/create-auction/create-auction')
+      .then(m => m.CreateAuction)
+},
+
+{
+  path: 'auction-list',
+  loadComponent: () =>
+    import('./features/auction/auction-list/auction-list')
+      .then(m => m.AuctionList)
+}
 
     ]
   },
@@ -141,7 +154,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/farmer/my-auction-requests/my-auction-requests')
             .then(m => m.MyAuctionRequests)
-      }
+      },
+      {
+  path: 'request-auction',
+  loadComponent: () =>
+    import('./features/farmer/request-auction/request-auction')
+      .then(m => m.RequestAuction)
+}
 
     ]
   },
@@ -174,7 +193,13 @@ export const routes: Routes = [
         loadComponent: () =>
           import('./features/buyer/available-crops/available-crops')
             .then(m => m.AvailableCrops)
-      }
+      },
+      {
+  path: 'crop-details/:id',
+  loadComponent: () =>
+    import('./features/buyer/crop-details/crop-details')
+      .then(m => m.CropDetails)
+}
 
     ]
   },

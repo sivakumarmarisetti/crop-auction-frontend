@@ -67,27 +67,30 @@ export class AuthService {
 
       })
     );
+
   }
 
   registerFarmer(
-    request: FarmerRegisterRequestModel
-  ): Observable<ApiResponseModel<void>> {
+  request: FarmerRegisterRequestModel
+): Observable<ApiResponseModel<void>> {
 
-    return this.http.post<ApiResponseModel<void>>(
-      `${this.apiUrl}/register/farmer`,
-      request
-    );
-  }
+  return this.http.post<ApiResponseModel<void>>(
+    `${this.apiUrl}/register/farmer`,
+    request
+  );
 
-  registerBuyer(
-    request: BuyerRegisterRequestModel
-  ): Observable<ApiResponseModel<void>> {
+}
 
-    return this.http.post<ApiResponseModel<void>>(
-      `${this.apiUrl}/register/buyer`,
-      request
-    );
-  }
+registerBuyer(
+  request: BuyerRegisterRequestModel
+): Observable<ApiResponseModel<void>> {
+
+  return this.http.post<ApiResponseModel<void>>(
+    `${this.apiUrl}/register/buyer`,
+    request
+  );
+
+}
 
   logout(): void {
 

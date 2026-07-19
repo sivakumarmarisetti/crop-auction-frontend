@@ -16,13 +16,14 @@ import { CropResponseModel } from '../models/crop-response.model';
 
 import { ApiResponseModel } from '../../../core/models/api-response.model';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class FarmerService {
 
   private http = inject(HttpClient);
-
+  
   readonly loading = signal(false);
 
   readonly crops = signal<CropResponseModel[]>([]);

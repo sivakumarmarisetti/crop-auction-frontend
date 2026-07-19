@@ -4,6 +4,10 @@ import { Role } from '../../../features/auth/models/role.model';
 
 export const SIDEBAR_ITEMS: SidebarMenu[] = [
 
+  // ===========================
+  // ADMIN
+  // ===========================
+
   {
     label: 'Dashboard',
     icon: 'dashboard',
@@ -26,11 +30,22 @@ export const SIDEBAR_ITEMS: SidebarMenu[] = [
   },
 
   {
-    label: 'Auctions',
-    icon: 'gavel',
-    route: APP_ROUTES.ADMIN.AUCTIONS,
+    label: 'Create Auction',
+    icon: 'add_circle',
+    route: APP_ROUTES.ADMIN.CREATE_AUCTION,
     roles: [Role.ADMIN]
   },
+
+  {
+    label: 'Auction List',
+    icon: 'gavel',
+    route: APP_ROUTES.ADMIN.AUCTION_LIST,
+    roles: [Role.ADMIN]
+  },
+
+  // ===========================
+  // FARMER
+  // ===========================
 
   {
     label: 'Dashboard',
@@ -54,11 +69,22 @@ export const SIDEBAR_ITEMS: SidebarMenu[] = [
   },
 
   {
-    label: 'Auction Requests',
+    label: 'Request Auction',
     icon: 'send',
+    route: APP_ROUTES.FARMER.REQUEST_AUCTION,
+    roles: [Role.FARMER]
+  },
+
+  {
+    label: 'My Auction Requests',
+    icon: 'history',
     route: APP_ROUTES.FARMER.MY_AUCTION_REQUESTS,
     roles: [Role.FARMER]
   },
+
+  // ===========================
+  // BUYER
+  // ===========================
 
   {
     label: 'Dashboard',
@@ -68,8 +94,8 @@ export const SIDEBAR_ITEMS: SidebarMenu[] = [
   },
 
   {
-    label: 'Available Crops',
-    icon: 'agriculture',
+    label: 'Active Auctions',
+    icon: 'gavel',
     route: APP_ROUTES.BUYER.AVAILABLE_CROPS,
     roles: [Role.BUYER]
   }

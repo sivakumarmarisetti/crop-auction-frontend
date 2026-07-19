@@ -9,14 +9,14 @@
 
         <app-stat-card
             title="Pending Users"
-            [value]="dashboard?.pendingUsers ?? 0"
+            [value]="dashboard?.totalFarmers ?? 0"
             icon="person_add"
             (click)="goToPendingUsers()">
         </app-stat-card>
 
         <app-stat-card
             title="Pending Auction Requests"
-            [value]="dashboard?.pendingAuctionRequests ?? 0"
+            [value]="dashboard?.scheduledAuctions ?? 0"
             icon="gavel"
             (click)="goToPendingAuctionRequests()">
         </app-stat-card>

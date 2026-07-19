@@ -1,1 +1,33 @@
-<h1>Buyer Dashboard</h1>
+<div *ngIf="dashboard">
+
+  <h2>Buyer Dashboard</h2>
+
+  <mat-card>
+
+    <h3>Active Auctions</h3>
+
+    <h1>{{ dashboard.activeBids }}</h1>
+
+  </mat-card>
+
+  <br>
+
+  <mat-card>
+
+    <h3>Total Bids</h3>
+
+    <h1>{{ dashboard.totalBids }}</h1>
+
+  </mat-card>
+
+  <br>
+
+  <mat-card>
+
+    <h3>Won Auctions</h3>
+
+    <h1>{{ dashboard.auctionsWon }}</h1>
+
+  </mat-card>
+
+</div>

@@ -1,1 +1,121 @@
-<p>available-crops works!</p>
+<mat-form-field appearance="outline">
+
+  <mat-label>Search Auctions</mat-label>
+
+  <input
+    matInput
+    placeholder="Search..."
+    (keyup)="applyFilter($event)"
+  />
+
+</mat-form-field>
+
+<table
+  mat-table
+  [dataSource]="dataSource"
+  matSort
+>
+
+  <!-- Crop -->
+  <ng-container matColumnDef="cropName">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Crop
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+      {{ auction.cropName }}
+    </td>
+
+  </ng-container>
+
+  <!-- Category -->
+  <ng-container matColumnDef="category">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Category
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+      {{ auction.category }}
+    </td>
+
+  </ng-container>
+
+  <!-- Quantity -->
+  <ng-container matColumnDef="quantity">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Quantity
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+      {{ auction.quantity }}
+    </td>
+
+  </ng-container>
+
+  <!-- Current Bid -->
+  <ng-container matColumnDef="currentHighestBid">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Current Bid
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+      ₹ {{ auction.currentHighestBid }}
+    </td>
+
+  </ng-container>
+
+  <!-- Ends At -->
+  <ng-container matColumnDef="endTime">
+
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>
+      Ends At
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+      {{ auction.endTime | date:'medium' }}
+    </td>
+
+  </ng-container>
+
+  <!-- Actions -->
+  <ng-container matColumnDef="actions">
+
+    <th mat-header-cell *matHeaderCellDef>
+      Actions
+    </th>
+
+    <td mat-cell *matCellDef="let auction">
+
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="viewDetails(auction)"
+      >
+        View
+      </button>
+
+    </td>
+
+  </ng-container>
+
+  <tr
+    mat-header-row
+    *matHeaderRowDef="displayedColumns">
+  </tr>
+
+  <tr
+    mat-row
+    *matRowDef="let row; columns: displayedColumns">
+  </tr>
+
+</table>
+
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5,10,20]"
+  showFirstLastButtons>
+</mat-paginator>

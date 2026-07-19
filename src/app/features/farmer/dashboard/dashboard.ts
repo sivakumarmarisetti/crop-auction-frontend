@@ -18,6 +18,7 @@ import { FarmerDashboardResponseModel } from '../models/farmer-dashboard-respons
 import { PageHeader } from '../../../shared/ui/page-header/page-header';
 import { StatCard } from '../../../shared/ui/stat-card/stat-card';
 import { TableCard } from '../../../shared/ui/table-card/table-card';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-dashboard',
@@ -29,7 +30,8 @@ import { TableCard } from '../../../shared/ui/table-card/table-card';
 
     PageHeader,
     StatCard,
-    TableCard
+    TableCard,
+    RouterLink
   ],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss'

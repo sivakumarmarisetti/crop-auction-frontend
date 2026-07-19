@@ -1,5 +1,3 @@
-import { CropResponseModel } from './crop-response.model';
-
 export interface FarmerDashboardResponseModel {
 
   totalCrops: number;
@@ -15,5 +13,25 @@ export interface FarmerDashboardResponseModel {
   approvedAuctionRequests: number;
 
   recentCrops: CropResponseModel[];
+
+}
+
+export interface CropResponseModel {
+
+  id: number;
+
+  cropName: string;
+
+  category: string;
+
+  quantity: number;
+
+  expectedPrice: number;
+
+  harvestDate: string;
+
+  description: string;
+
+  status: string;
 
 }

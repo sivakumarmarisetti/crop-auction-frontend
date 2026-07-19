@@ -1,18 +1,33 @@
-import { Component, OnInit, ViewChild, inject } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewChild,
+  inject,
+  ChangeDetectorRef
+} from '@angular/core';
 
 import { CommonModule } from '@angular/common';
 
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
+import {
+  MatTableDataSource,
+  MatTableModule
+} from '@angular/material/table';
 
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import {
+  MatPaginator,
+  MatPaginatorModule
+} from '@angular/material/paginator';
 
-import { MatSort, MatSortModule } from '@angular/material/sort';
+import {
+  MatSort,
+  MatSortModule
+} from '@angular/material/sort';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 
 import { AuctionRequestService } from '../services/auction-request.service';
-
 import { AuctionRequestResponseModel } from '../models/auction-request-response.model';
 
 import { NotificationService } from '../../../core/services/notification.service';
@@ -26,6 +41,7 @@ import { SearchBarComponent } from '../../../shared/ui/search-bar/search-bar';
 import { TableCard } from '../../../shared/ui/table-card/table-card';
 import { StatusChip } from '../../../shared/ui/status-chip/status-chip';
 import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
+
 @Component({
   selector: 'app-my-auction-requests',
   standalone: true,
@@ -38,22 +54,26 @@ import { EmptyState } from '../../../shared/ui/empty-state/empty-state';
 
     MatInputModule,
     MatFormFieldModule,
+
     AuctionRequestStatusColorPipe,
+
     PageContainerComponent,
     PageHeader,
     PageToolbarComponent,
     SearchBarComponent,
     TableCard,
     StatusChip,
-    EmptyState,
+    EmptyState
   ],
   templateUrl: './my-auction-requests.html',
-  styleUrl: './my-auction-requests.scss',
+  styleUrl: './my-auction-requests.scss'
 })
-export class MyAuctionRequests implements OnInit {
-  private auctionRequestService = inject(AuctionRequestService);
+export class MyAuctionRequests implements OnInit, AfterViewInit {
 
+  private auctionRequestService = inject(AuctionRequestService);
   private notificationService = inject(NotificationService);
+  private cdr =
+  inject(ChangeDetectorRef);
 
   displayedColumns = [
     'cropName',
@@ -61,10 +81,11 @@ export class MyAuctionRequests implements OnInit {
     'requestedAt',
     'approvedAt',
     'farmerRemarks',
-    'adminComments',
+    'adminComments'
   ];
 
-  dataSource = new MatTableDataSource<AuctionRequestResponseModel>();
+  dataSource =
+    new MatTableDataSource<AuctionRequestResponseModel>();
 
   @ViewChild(MatPaginator)
   paginator!: MatPaginator;
@@ -76,25 +97,65 @@ export class MyAuctionRequests implements OnInit {
     this.loadRequests();
   }
 
+  ngAfterViewInit(): void {
+
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+
+    this.dataSource.filterPredicate = (data, filter) => {
+
+      const value = (
+        data.cropName +
+        data.status +
+        (data.farmerRemarks ?? '') +
+        (data.adminComments ?? '')
+      ).toLowerCase();
+
+      return value.includes(filter);
+
+    };
+
+  }
+
   loadRequests(): void {
-    this.auctionRequestService.getMyRequests().subscribe({
-      next: (response) => {
-        this.dataSource.data = response.data;
 
-        this.dataSource.paginator = this.paginator;
+    this.auctionRequestService
+      .getMyRequests()
+      .subscribe({
 
-        this.dataSource.sort = this.sort;
-      },
+        next: (response) => {
 
-      error: (error) => {
-        this.notificationService.error(error.error?.message ?? 'Unable to load auction requests.');
-      },
-    });
+          this.dataSource.data = response.data;
+          this.cdr.detectChanges();
+
+        },
+
+        error: (error) => {
+
+          this.notificationService.error(
+            error.error?.message ??
+            'Unable to load auction requests.'
+          );
+
+        }
+
+      });
+
   }
 
   applyFilter(event: Event): void {
-    const value = (event.target as HTMLInputElement).value;
 
-    this.dataSource.filter = value.trim().toLowerCase();
+    const value = (event.target as HTMLInputElement)
+      .value
+      .trim()
+      .toLowerCase();
+
+    this.dataSource.filter = value;
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+
   }
+
 }

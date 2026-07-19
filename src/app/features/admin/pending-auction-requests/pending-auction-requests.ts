@@ -2,7 +2,8 @@ import {
   Component,
   OnInit,
   ViewChild,
-  inject
+  inject,
+  ChangeDetectorRef
 } from '@angular/core';
 
 import { CommonModule } from '@angular/common';
@@ -72,6 +73,9 @@ export class PendingAuctionRequests implements OnInit {
   private dialog =
     inject(MatDialog);
 
+    private cdr =
+  inject(ChangeDetectorRef);
+
   displayedColumns = [
     'cropName',
     'status',
@@ -105,6 +109,7 @@ export class PendingAuctionRequests implements OnInit {
 
           this.dataSource.data =
             response.data;
+            this.cdr.detectChanges();
 
           this.dataSource.paginator =
             this.paginator;
